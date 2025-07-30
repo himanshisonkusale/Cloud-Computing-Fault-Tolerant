@@ -1,10 +1,5 @@
 # Fault-Tolerant Distributed Key-Value Store
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
-[![C++](https://img.shields.io/badge/C%2B%2B-11-blue.svg)]()
-[![Platform](https://img.shields.io/badge/platform-Linux-lightgrey.svg)]()
-
 A high-performance, fault-tolerant distributed key-value store implementation built in C++ as part of the Cloud Computing Coursework (C3 Part 2). The system provides ACID-compliant operations with automatic failure recovery and data consistency guarantees through quorum-based replication.
 
 ## 🎯 Overview
@@ -236,7 +231,7 @@ grep "STABILIZATION" logs/dbg.log
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](docs/CONTRIBUTING.md) for details.
+We welcome contributions! Please follow the development workflow below.
 
 ### Development Workflow
 
@@ -248,15 +243,15 @@ We welcome contributions! Please see our [Contributing Guidelines](docs/CONTRIBU
 
 ### Code Standards
 
-- Follow [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
+- Follow Google C++ Style Guide
 - Include unit tests for new features
 - Update documentation as needed
 
 ## 📖 Documentation
 
-- [API Reference](docs/API.md) - Detailed API documentation
-- [System Design](docs/DESIGN.md) - Architecture and design decisions
-- [Troubleshooting Guide](docs/TROUBLESHOOTING.md) - Common issues and solutions
+- **API Reference** - Detailed API documentation
+- **System Design** - Architecture and design decisions
+- **Troubleshooting Guide** - Common issues and solutions
 
 ## 🐛 Troubleshooting
 
@@ -283,3 +278,5 @@ cat logs/dbg.log | grep ERROR
 # Check system resources
 top -p $(pgrep MP2Node)
 ```
+
+---
