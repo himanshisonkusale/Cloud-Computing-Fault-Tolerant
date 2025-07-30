@@ -17,6 +17,24 @@ This project is part of the *Cloud Computing Specialization - Programming Assign
 
 ---
 
+## 📂 Project Structure
+
+├── MP1Node.cpp/.h # Membership Protocol (from Part 1)
+├── MP2Node.cpp/.h # Key-Value Store Logic (implement here)
+├── EmulNet.* # Emulated Network Layer (do not modify)
+├── Log.* # Logging functions
+├── HashTable.* # Provided hash table wrapper (C++11 map)
+├── Application.cpp # Application layer test cases
+├── KVStoreGrader.sh # Local grading script
+├── dbg.log # Output log file for grading
+└── submit.py # Submit to Coursera
+
+yaml
+Copy
+Edit
+
+---
+
 ## 🧱 Architecture
 
 The system is composed of three logical layers:
@@ -68,3 +86,18 @@ Use the provided grading script to test your implementation:
 
 ```bash
 $ ./KVStoreGrader.sh
+This script will run a set of test cases that check for:
+
+✔️ Basic CRUD operations
+
+🔁 Key replication under single node failures
+
+❌ Quorum failure scenarios with multiple node crashes
+
+🛠️ Stabilization and successful operations after failure recovery
+
+A log file named dbg.log will be generated automatically and evaluated against expected log patterns.
+
+To view or debug logs manually:
+```bash
+$ cat dbg.log
