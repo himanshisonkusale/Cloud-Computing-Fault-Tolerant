@@ -1,16 +1,70 @@
-# Fault Tolerant Key-Value store.
-A solution to fault tolerant distributed Key-Value store assignment for cloud computing concepts part 2 (Coursera)
+# MP2: Fault-Tolerant Key-Value Store
 
-- Designed and implemented a key-value/NoSQL storage system, which supports CRUD operations (create, read, update, delete).
-- Arranged nodes storing the Key-Value pairs in a ring topology and implemented load-balancing using consistent hashing.
-- Replicated each key three times to three successive nodes in the ring to achieve fault-tolerance up to two failures.
-- Implemented Quorum consistency (at least 2 replicas) for both reads and writes.
-- Implemented Stabilization after failures, which recreates 3 replicas.
+## 📘 Overview
 
-- To detect the failures of nodes, implemented a SWIM-style membership protocol.
-- The membership protocol satisfied completeness and accuracy of failure detection. 
-- i.e. All non-faulty nodes detect every node join, failure and leave.
-- And When there are no message losses and message delays are small, all failures are detected. 
-- When there are message losses, completeness is satisfied and accuracy is high.
+This project is part of the *Cloud Computing Specialization - Programming Assignment (C3 Part 2)* and focuses on implementing a **fault-tolerant distributed key-value store**. The system is built in C++ and runs on a virtual emulated network environment. Key features include consistent hashing, replication for fault-tolerance, quorum-based consistency, and stabilization on node failure.
 
-The membership protocol is taken from part 1 of the course : https://github.com/ravibitsgoa/membership-protocol
+---
+
+## 💡 Features
+
+- ✅ **CRUD Operations**: Full support for Create, Read, Update, and Delete operations.
+- 🔁 **Consistent Hashing Ring**: Ensures uniform key distribution and simplifies node joining/leaving.
+- 🔄 **Replication (3 copies)**: Every key is replicated on three successive nodes for fault tolerance.
+- 💥 **Fault Tolerance**: Can tolerate up to two simultaneous node failures.
+- ☑️ **Quorum-Based Consistency**: Write and read operations require a quorum (≥2/3 nodes) to succeed.
+- 🔧 **Stabilization Protocol**: Automatically handles key re-replication after a node crash.
+
+---
+
+## 🧱 Architecture
+
+The system is composed of three logical layers:
+
+1. **Application Layer** (Top)
+2. **P2P Layer**:
+   - `MP1Node` - Membership protocol (already implemented in C3 Part 1).
+   - `MP2Node` - Key-value store logic (implemented in this project).
+3. **EmulNet Layer** (Bottom) - Simulated network for message passing.
+
+Each node is logically split into `MP1Node` and `MP2Node` components. Nodes communicate through a simulated single-threaded EmulNet engine.
+
+---
+
+## 🛠️ Files to Modify
+
+You are only allowed to modify the following files:
+
+- `MP1Node.cpp` / `MP1Node.h` – Import your working membership protocol.
+- `MP2Node.cpp` / `MP2Node.h` – Implement the KV store logic here.
+
+---
+
+## 📌 Functions to Implement
+
+### 🔄 Ring Management
+- `MP2Node::updateRing()`
+
+### 🧑‍💻 Client-side APIs
+- `MP2Node::clientCreate()`
+- `MP2Node::clientRead()`
+- `MP2Node::clientUpdate()`
+- `MP2Node::clientDelete()`
+
+### 🖥️ Server-side APIs
+- `MP2Node::createKeyValue()`
+- `MP2Node::readKey()`
+- `MP2Node::updateKeyValue()`
+- `MP2Node::deleteKey()`
+
+### 🛡️ Fault Tolerance
+- `MP2Node::stabilizationProtocol()`
+
+---
+
+## 🧪 Testing
+
+Use the provided grading script to test your implementation:
+
+```bash
+$ ./KVStoreGrader.sh
